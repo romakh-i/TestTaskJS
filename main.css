@@ -1,0 +1,30 @@
+#tabs {
+  display: flex;
+  justify-content: center;
+  /* border-bottom: solid 1px #4286f4; */
+  font-size: 20px;
+  padding-inline-end: 40px;
+}
+
+a {
+  cursor: pointer;
+}
+
+#tabs li {
+  list-style: none;
+}
+
+#tabs li a {
+  background-color: #d4d7db;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 2px;
+}
+
+#tabs li a.not-active {
+  background-color: #c5c8cc;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+}

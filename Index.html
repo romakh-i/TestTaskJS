@@ -15,8 +15,26 @@
 </head>
 
 <body>
-  <h4 id="description"> </h4>
+  <p id="description"> </p>
+  <div class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <p id="itemTitle"></p>
+      </div>
 
+      <div class="modal-body">
+        <div class="photo-viewer">
+          <div class="photoNumber">1</div>
+          <a class="prev">&#10094;</a>
+          <a class="next">&#10095;</a>
+          <img class="gallery-img">
+        </div>
+        <p id="longDesc"></p>
+        <iframe class="video" style="display: none;" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

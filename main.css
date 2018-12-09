@@ -1,7 +1,6 @@
 #tabs {
   display: flex;
   justify-content: center;
-  /* border-bottom: solid 1px #4286f4; */
   font-size: 20px;
   padding-inline-end: 40px;
 }
@@ -10,7 +9,7 @@ a {
   cursor: pointer;
 }
 
-#tabs li {
+li {
   list-style: none;
 }
 
@@ -27,4 +26,14 @@ a {
   padding: 3px;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.container {
+  margin: auto;
+  width: 50%;
+  background-color: rebeccapurple;
+}
+
+.container ul li {
+  padding: 5px;
 }

@@ -1,7 +1,8 @@
 $(document).ready(function () {
-  $.ajax({
-    url: 'https://api.myjson.com/bins/1g83li', // with enabled categories
-    //url: 'https://api.myjson.com/bins/1eclta', // with disabled categories
+  $.getJSON({
+    url: './data/test.json',
+    method: 'get',
+
     success: function (data) {
       initPage(data);
 
@@ -119,10 +120,11 @@ $(window).click(function (event) {
 })
 
 function initPage(data) {
-  document.title = data.name;
-  document.body.style.color = "#" + data.accentColor;
-  document.body.style.backgroundColor = "#" + data.accentColorSecondary;
-  document.getElementById("description").innerText = data.description;
+  $(document)[0].title = data.name;
+  $("body")[0].style.color = "#" + data.accentColor;
+  $("body")[0].style.backgroundColor = "#" + data.accentColorSecondary;
+  $("#description")[0].innerText = data.description;
+  $("#favicon")[0].href = "./img/Home-Icon_thumb.png"
 }
 
 // shows one item
@@ -135,13 +137,15 @@ function showItem(item, contId) {
   $("#" + itemId).append(`<h4 class="title">${item.title}</h4>`);
   $("#" + itemId).append(`<p class="desc">${item.description}</p>`);
 }
-// gets photo path without root
+// gets photo path without root directory
 function getPhotoPath() {
   return $(".gallery-img")[0].src.match(/img\/items\/.+$/);
 }
 // get number of current photo from all
 function getPhotoNumber(data, title, currPhotoUrl) {
   const images = getItemByTitle(data, title).gallery_images;
+  if (images.length == 1)
+    return null;
 
   for (let i = 0; i < images.length; i++) {
     if (images[i].url == currPhotoUrl) {
@@ -175,7 +179,7 @@ function getPrevPhoto(data, title, currPhotoUrl) {
     }
   }
 }
-
+// retrieve item by its description
 function getItemByTitle(data, title) {
   return data.items.find((elem) => {
     return elem.title == title;

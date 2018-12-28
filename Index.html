@@ -8,14 +8,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link id="favicon" rel="shortcut icon" type="image/png" href="img/Home-Icon_thumb.png" />
+  <link id="favicon" rel="shortcut icon" type="image/png" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
 
   <script src="main.js"></script>
   <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-  <p id="description"> </p>
+  <div class="jumbotron d-none d-md-block">
+    <p id="description" class="text-center"></p>
+  </div>
+
   <div class="modal" style="display: none;">
     <div class="modal-content">
       <div class="modal-header">
@@ -30,6 +40,7 @@
           <a class="next">&#10095;</a>
           <img class="gallery-img">
         </div>
+
         <p id="longDesc"></p>
         <iframe class="video" style="display: none;" frameborder="0" allowfullscreen></iframe>
       </div>

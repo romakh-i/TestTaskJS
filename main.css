@@ -2,7 +2,15 @@
   font-family: Helvetica, Verdana, sans-serif;
 }
 
-a {
+.main-desc {
+  padding: 2rem 1rem;
+}
+
+.navbar-brand {
+  cursor: default;
+}
+
+/* a {
   cursor: pointer;
 }
 
@@ -49,9 +57,30 @@ li {
   padding: 5px;
   background-color: #d2d8db;
   border-bottom: 5px solid #dee2e8;
+} */
+
+.disabled {
+  cursor: default;
 }
 
-.title {
+.card-title {
+  margin-top: 3%;
+}
+
+.item-content {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.small-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 17rem;
+
+}
+
+/* .title {
   margin-left: 170px;
 }
 
@@ -172,4 +201,4 @@ li {
     top: 0;
     opacity: 1
   }
-}
+} */

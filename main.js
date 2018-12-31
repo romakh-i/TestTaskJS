@@ -1,6 +1,7 @@
 $(document).ready(function () {
   $.getJSON({
-    url: './data/test.json',
+    url: '/work/TestTaskJS/data/test.json',
+    type: 'json',
     method: 'get',
 
     success: function (data) {
@@ -16,23 +17,46 @@ $(document).ready(function () {
           return a.positionNumber - b.positionNumber;
         });
 
-        $("body").append(`<ul id="tabs"></ul>`);
+        $("body").append(`
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark navbar-center">
+          <a class="navbar-brand" href="#">Categories</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tabs" aria-controls="tabs" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="tabs">
+          <div class="nav navbar-nav"></div>
+          </div>
+        </nav>`);
+
+        $("body").append('<div id="tabs-content" class="tab-content"></div>');
+
         for (const category of sortedCategories) {
           if (category.active) {
-            $("#tabs").append(`<li><a id="cat${category.id}">${category.name}</a></li>`);
-            $("#tabs li a").addClass("not-active");
+            $("#tabs div.navbar-nav").append(`<a id="cat${category.id}-tab" class="nav-item nav-link" data-toggle="tab"` +
+              `href="#cat${category.id}" role="tab" aria-controls="cat${category.id}" aria-selected="false">${category.name}</a>`);
 
-            const contId = "cat" + category.id + "con";
-            $("body").append(`<div id=${contId} class="container"><ul></ul></div>`);
-            $("#" + contId).hide();
+            $("#tabs-content").append(`<div id="cat${category.id}" class="tab-pane fade" role="tabpanel" aria-labelledby="cat${category.id}-tab"></div>`)
+
+            //$(`#tabs-content #cat${category.id}`).append(`<div class="container-fluid py-3"></div>`);
+            //const contId = "cat" + category.id + "con";
+            // $("body").append(`<div id=${contId} class="container"><ul></ul></div>`);
+            // $("#" + contId).hide();
 
             for (const item of sortedItems) {
               if (category.items.includes(item.id)) {
-                showItem(item, contId);
+                //showItem(item, contId);
+                $(`#tabs-content #cat${category.id}`).append(setContent(item));
               }
             }
+          } else {
+            $("#tabs div.navbar-nav").append(`<a id="cat${category.id}-tab" class="nav-item nav-link disabled" data-toggle="tab"` +
+              `href="#cat${category.id}" role="tab" aria-controls="cat${category.id}" aria-selected="false">${category.name}</a>`);
+
+            $("#tabs-content").append(`<div id="cat${category.id}" class="tab-pane fade disabled" role="tabpanel" aria-labelledby="cat${category.id}-tab"></div>`)
           }
         }
+        $("#tabs div.navbar-nav a:not(.disabled):first").addClass("show active"); //.tab("show");
+        $("#tabs-content div:not(.disabled):first").addClass("show active");
 
         // if categories disabled
       } else {
@@ -111,7 +135,7 @@ $(document).ready(function () {
   });
 })
 
-// close the modal window by clicking anywhere outside 
+// close the modal window by clicking anywhere outside
 $(window).click(function (event) {
   let modal = $(".modal")[0];
   if (event.target == modal) {
@@ -125,6 +149,24 @@ function initPage(data) {
   $("body")[0].style.backgroundColor = "#" + data.accentColorSecondary;
   $("#description")[0].innerText = data.description;
   $("#favicon")[0].href = "./img/Home-Icon_thumb.png"
+}
+
+function setContent(item) {
+  return `<div class="container-fluid py-3 item-content">
+    <div id="item${item.id}" class="card">
+      <div class="row ">
+        <div class="col-sm-4">
+          <img src="${item.gallery_images[0].url}" class="small-img img-thumbnail">
+        </div>
+        <div class="col-sm-8 px-3">
+          <div class="card-block px-3">
+            <h4 class="card-title">${item.title}</h4>
+            <p class="card-text">${item.description}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
 }
 
 // shows one item

@@ -5,3 +5,4 @@
 
 ### Example in cmd:
 >`start chrome --allow-file-access-from-files`
+* possibly previously you need to close all instances of Chrome

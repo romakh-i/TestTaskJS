@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $.getJSON({
-    url: '../TestTaskJS/data/test.json',
+    url: './data/test.json',
     type: 'json',
     method: 'get',
 

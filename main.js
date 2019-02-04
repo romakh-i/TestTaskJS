@@ -1,7 +1,6 @@
 $(document).ready(function () {
   $.getJSON({
     url: './data/test.json',
-    type: 'json',
     method: 'get',
 
     success: function (data) {
@@ -142,9 +141,9 @@ function setContent(item) {
         </div>
         <div class="col-sm-8 px-3">
           <div class="card-block px-3">
-            <h4 class="card-title">${item.title}</h4>
-            <p class="card-text">${item.description}</p>
-          </div>
+            <h5 class="card-title">${item.title}</h5>
+            <p class="card-text text-secondary">${item.description}</p>
+          </div>  
         </div>
       </div>
     </div>

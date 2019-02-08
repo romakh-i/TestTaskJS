@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $.getJSON({
-    url: './data/test.json',
+    url: 'https://api.myjson.com/bins/11y27c',
     method: 'get',
 
     success: function (data) {
@@ -63,7 +63,8 @@ $(document).ready(function () {
 
       // hide navbar when category was choosed
       $(".nav-item.nav-link:not(.disabled)").click(function () {
-        $(".navbar-toggler-icon").click();
+        if ($(".navbar-toggler-icon").is(':visible'))
+          $(".navbar-toggler-icon").click();
       });
 
       // render modal window
